@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Phone, ExternalLink, Download, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isVisible, setIsVisible] = useState({});
   const [currentImageIndex, setCurrentImageIndex] = useState({});
+
+  // Helper function for asset paths
+  const getAssetPath = (path) => `${process.env.PUBLIC_URL}${path}`;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,10 +41,10 @@ const Portfolio = () => {
       tech: ["SwiftUI", "Supabase", "MapKit", "HealthKit"],
       description: "Full-stack iOS mobile application featuring real-time GPS tracking, interactive route mapping, and comprehensive workout analytics with cloud synchronization.",
       images: [
-        "/stridrApp1.png",
-        "/stridrApp2.png",
-        "/stridrApp3.png",
-        "/stridrApp4.png"
+        getAssetPath("/stridrApp1.png"),
+        getAssetPath("/stridrApp2.png"),
+        getAssetPath("/stridrApp3.png"),
+        getAssetPath("/stridrApp4.png")
       ],
       link: "https://github.com/JimmyChen02/Stridr"
     },
@@ -53,42 +55,24 @@ const Portfolio = () => {
       description: "Award-winning iOS app that won Best UI/UX Award at Cornell AppDev Hackathon among 19 teams (80+ participants).",
       award: "Best UI/UX Award",
       images: [
-        "/munchApp1.png",
-        "/munchApp2.png",
-        "/munchApp3.png",
-        "/munchApp4.png"
+        getAssetPath("/munchApp1.png"),
+        getAssetPath("/munchApp2.png"),
+        getAssetPath("/munchApp3.png"),
+        getAssetPath("/munchApp4.png")
       ],
       link: "https://github.com/AndrewG828/munch-ios"
-    },
-    // {
-    //   title: "NY Tutoring Center",
-    //   subtitle: "Website Development",
-    //   tech: ["Drupal", "Docker", "SQL", "Git"],
-    //   description: "Production website serving 100+ students with free tutoring services, launched within 6-month period.",
-    //   images: [
-    //     "/tutoring-website.png",
-    //     "/tutoring-home.png",
-    //     "/tutoring-courses.png",
-    //     "/tutoring-contact.png"
-    //   ],
-    //   link: "#"
-    // }
+    }
   ];
 
   const skills = [
-
-  // Languages
-  "HTML", "CSS", "JavaScript", "Python", "Java", "Swift", "SQL",
-
-  // Frameworks/Libraries
-  "Bootstrap", "jQuery", "Drupal", "React.js", "SwiftUI", "Firebase", "Supabase", "Core Location", "MapKit", "HealthKit", "NumPy", "BeautifulSoup",
-
-  // Developer Tools
-  "Git", "Docker", "VS Code", "Xcode", "Supabase CLI", "MySQL", "PostgreSQL",
-
-  // Cloud/Backend
-  "RESTful APIs", "Apple Developer Services"
-
+    // Languages
+    "HTML", "CSS", "JavaScript", "Python", "Java", "Swift", "SQL",
+    // Frameworks/Libraries
+    "Bootstrap", "jQuery", "Drupal", "React.js", "SwiftUI", "Firebase", "Supabase", "Core Location", "MapKit", "HealthKit", "NumPy", "BeautifulSoup",
+    // Developer Tools
+    "Git", "Docker", "VS Code", "Xcode", "Supabase CLI", "MySQL", "PostgreSQL",
+    // Cloud/Backend
+    "RESTful APIs", "Apple Developer Services"
   ];
 
   const nextImage = (projectIndex) => {
@@ -149,7 +133,7 @@ const Portfolio = () => {
   Photography
 </Link>
               <a
-                href="/JimmyChen_resume.pdf"
+                href={getAssetPath("/JimmyChen_resume.pdf")}
                 download
                 className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
@@ -170,7 +154,7 @@ const Portfolio = () => {
               <div className="relative">
                 <div className="w-100 h-100 md:w-64 md:h-64 overflow-hidden border-4 border-grey rounded-2xl shadow-xl bg-gradient-to-br from-blue-400 to-slate-600">
                   <img 
-                    src="jimmy-profile.png"
+                    src={getAssetPath("/jimmy-profile.png")}
                     alt="Jimmy Chen"
                     className="w-full h-full object-cover"
                     style={{
@@ -178,6 +162,10 @@ const Portfolio = () => {
                       backgroundSize: 'cover'
                     }}
                     onLoad={(e) => e.target.style.backgroundImage = 'none'}
+                    onError={(e) => {
+                      console.log('Profile image failed to load:', getAssetPath("/jimmy-profile.png"));
+                      e.target.style.display = 'none';
+                    }}
                   />
                 </div>
               </div>
@@ -240,7 +228,6 @@ const Portfolio = () => {
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
                 Other than computer science, I find myself very interested in things like fashion and photography! 
                 Check out some of my photos in the photos tab!!!
-
             </p>
           </div>
           
@@ -318,6 +305,7 @@ const Portfolio = () => {
                           alt={`${project.title} - Image ${(currentImageIndex[projectIndex] || 0) + 1}`}
                           className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
                           onError={(e) => {
+                            console.log('Project image failed to load:', project.images[currentImageIndex[projectIndex] || 0]);
                             e.target.style.display = 'none';
                             e.target.nextSibling.style.display = 'flex';
                           }}

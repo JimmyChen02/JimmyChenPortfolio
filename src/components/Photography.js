@@ -5,10 +5,13 @@ import { ArrowLeft, Download } from 'lucide-react';
 const Photography = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
+  // Helper function for asset paths
+  const getAssetPath = (path) => `${process.env.PUBLIC_URL}${path}`;
+
   const photos = [
     {
       id: 1,
-      src: "/Japan1.jpg", 
+      src: getAssetPath("/Japan1.jpg"), 
       alt: "Landmarks",
       title: "View from the top of Mount Fuji",
       description: "Captured using my iPhone on a cable car.",
@@ -17,7 +20,7 @@ const Photography = () => {
     },
     {
       id: 2,
-      src: "/YasakaShrine.jpg",
+      src: getAssetPath("/YasakaShrine.jpg"),
       alt: "Landmarks",
       title: "Yasaka Shrine",
       description: "Captured using my iPhone.",
@@ -26,7 +29,7 @@ const Photography = () => {
     },
     {
       id: 3,
-      src: "/NaraPark.jpg",
+      src: getAssetPath("/NaraPark.jpg"),
       alt: "Nature",
       title: "Deers @ Nara Park!",
       description: "Captured using my iPhone.",
@@ -35,7 +38,7 @@ const Photography = () => {
     },
     {
       id: 4,
-      src: "/northernLights.jpg",
+      src: getAssetPath("/northernLights.jpg"),
       alt: "Nature",
       title: "Northern Lights seen @ Cornell",
       description: "Shot on iPhone with increased exposure time.",
@@ -44,7 +47,7 @@ const Photography = () => {
     },
     {
       id: 5,
-      src: "/columbia.JPG",
+      src: getAssetPath("/columbia.JPG"),
       alt: "Street Photography",
       title: "Columbia Campus",
       description: "Taken on disposable camera and images were processed & scanned.",
@@ -53,7 +56,7 @@ const Photography = () => {
     },
     {
       id: 6,
-      src: "/photo6.jpg",
+      src: getAssetPath("/photo6.jpg"),
       alt: "",
       title: "",
       description: "",
@@ -62,7 +65,7 @@ const Photography = () => {
     },
     {
       id: 7,
-      src: "/photo7.jpg",
+      src: getAssetPath("/photo7.jpg"),
       alt: "",
       title: "",
       description: "",
@@ -71,7 +74,7 @@ const Photography = () => {
     },
     {
       id: 8,
-      src: "/photo8.jpg",
+      src: getAssetPath("/photo8.jpg"),
       alt: "",
       title: "",
       description: "",
@@ -80,7 +83,7 @@ const Photography = () => {
     },
     {
       id: 9,
-      src: "/photo9.jpg",
+      src: getAssetPath("/photo9.jpg"),
       alt: "",
       title: "",
       description: "",
@@ -120,7 +123,7 @@ const Photography = () => {
                 Back to Portfolio
               </Link>
               <a
-                href="/JimmyChen_resume.pdf"
+                href={getAssetPath("/JimmyChen_resume.pdf")}
                 download
                 className="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1"
               >
