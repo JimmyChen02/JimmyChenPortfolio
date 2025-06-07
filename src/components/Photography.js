@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Download } from 'lucide-react';
 
 const Photography = () => {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  // Helper function for asset paths
   const getAssetPath = (path) => `${process.env.PUBLIC_URL}${path}`;
 
   const photos = [
