@@ -42,7 +42,7 @@ const Portfolio = () => {
       description: "Terminal-based multi-user password management system with Fernet encryption, PBKDF2 key derivation, and AWS cloud deployment featuring private database architecture and complete user data isolation.",
       images: [
         getAssetPath("/passwordManager1.png"),
-        getAssetPath("/passwrodManager2.png")
+        getAssetPath("/passwordManager2.png")
       ],
       link: "https://github.com/JimmyChen02/PasswordManager"
     },
@@ -308,17 +308,15 @@ const Portfolio = () => {
               <div key={projectIndex} className="group">
                 <div className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="flex flex-col">
-                    <div className="aspect-video bg-gradient-to-br from-slate-100 to-blue-100 flex items-center justify-center relative overflow-hidden">
-                      {/* Image Slideshow */}
+                    <div className="aspect-video bg-gradient-to-br from-slate-100 to-blue-100 flex items-center justify-center relative overflow-hidden p-4">                           {/* Image Slideshow */}
                       <div className="relative w-full h-full flex items-center justify-center">
                         <img 
                           src={project.images[currentImageIndex[projectIndex] || 0]} 
                           alt={`${project.title} - Image ${(currentImageIndex[projectIndex] || 0) + 1}`}
-                          className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                          onError={(e) => {
-                            console.log('Project image failed to load:', project.images[currentImageIndex[projectIndex] || 0]);
-                            e.target.style.display = 'none';
-                            e.target.nextSibling.style.display = 'flex';
+                          className="max-w-full max-h-full object-contain rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300"
+                          style={{
+                            maxWidth: 'calc(100% - 2rem)',
+                            maxHeight: 'calc(100% - 2rem)'
                           }}
                         />
                         <div className="hidden items-center justify-center w-full h-full absolute inset-0">
