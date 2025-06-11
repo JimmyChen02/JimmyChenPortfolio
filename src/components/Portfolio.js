@@ -36,6 +36,17 @@ const Portfolio = () => {
 
   const projects = [
     {
+      title: "AWS-Deployed Multi-User Password Manager",
+      subtitle: "Secure Password Manager",
+      tech: ["Python", "PostgreSQL", "AWS EC2", "AWS RDS", "Cryptography", "SSL/TLS"],
+      description: "Terminal-based multi-user password management system with Fernet encryption, PBKDF2 key derivation, and AWS cloud deployment featuring private database architecture and complete user data isolation.",
+      images: [
+        getAssetPath("/passwordManager1.png"),
+        getAssetPath("/passwrodManager2.png")
+      ],
+      link: "https://github.com/JimmyChen02/PasswordManager"
+    },
+    {
       title: "Stridr",
       subtitle: "iOS Run Tracker App",
       tech: ["SwiftUI", "Supabase", "MapKit", "HealthKit"],
