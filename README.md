@@ -41,16 +41,9 @@ The `npm run deploy` command automatically:
 2. **Pushes the built files to `gh-pages` branch**
 3. **Triggers GitHub Pages to update your live site**
 
-## Pro Tips
-
-- You can skip Step 2 if you're just experimenting, but it's good practice to keep your main branch updated
-- Save this process somewhere - you'll use `npm run deploy` every single time! 🚀
-- Always test locally before deploying to catch issues early
-- If your site doesn't update immediately, wait a few minutes and try a hard refresh
-
 ---
 
-**Live Site**: [https://jimmychen02.github.io/JimmyChen.github.io/#/](https://jimmychen02.github.io/JimmyChen.github.io/#/)
+**Live Site**: [https://jimmychen02.github.io/JimmyChenPortfolio/](https://jimmychen02.github.io/JimmyChenPortfolio/)
 
 ## Contact
 
